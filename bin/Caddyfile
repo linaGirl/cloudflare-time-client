@@ -1,0 +1,13 @@
+localhost {
+    header {
+        -last-modified
+    }
+
+
+    encode zstd gzip
+
+    route /* {
+        root * ../
+        file_server
+    }
+}
