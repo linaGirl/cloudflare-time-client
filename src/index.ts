@@ -17,8 +17,12 @@
                 Accept: 'application/json',
             }
         });
-
-        if (response.status !== 200) {
+        
+        if (response.status === 429) {
+            // use the systems time as fallback when cloudflare 
+            // is blocking the request
+            return new Date();
+        } else if (response.status !== 200) {
             throw new Error(`Failed to fetch server time: the server returned the status code ${response.status}`);
         }
 
