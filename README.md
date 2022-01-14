@@ -14,16 +14,17 @@ If your environment does **not** allow to execute asynchronous javascript, this 
     <title>Server Time</title>
     <script type="text/javascript" src="./build/index.js"></script>
     <script type="text/javascript">
-      // the timeout is only present for this demonstration since the 
-      // server time is not available immediatelly. You porpably wont
-      // use a timeout in your code.
+      // the timeout is only present for this demonstration since 
+      // the server time is not available immediatelly. You 
+      // porpably wont use a timeout in your code.
       setTimeout(() => {
-        // the timestamp passed to the isLaterThan method is UTC time! 
-        // When used in Switzerland during winter time, one hour must be 
-        // removed; e.g.: if you want to check if it's 13:00:00 on January 
-        // 20 you have to pass the following string: 
-        // 2022-01-20T12:00:00.000Z
-        // make sure the Z character at the end of the string is present!
+        // the timestamp passed to the isLaterThan method is UTC 
+        // time! When used in Switzerland during winter time, one 
+        // hour must be removed; e.g.: if you want to check if 
+        // it's 13:00:00 on January 20 you have to pass the 
+        // following string: 2022-01-20T12:00:00.000Z
+        // make sure the Z character at the end of the string is 
+        // present!
         if (serverTime.isLaterThan('2022-01-20T2:00:00.000Z')) {
           // display message that shall be displayed after 13:00
         } else {
@@ -47,13 +48,15 @@ If your environment **does** allow to execute asynchronous javascript, you may u
     <script type="text/javascript">
       (async() => {
         try {
-          // the timestamp passed to the isLaterThanAsync method is UTC time! 
-          // When used in Switzerland during winter time, one hour must be 
-          // removed; e.g.: if you want to check if it's 13:00:00 on January 
-          // 20 you have to pass the following string: 
-          // 2022-01-20T12:00:00.000Z
-          // make sure the Z character at the end of the string is present!
-          const isLater = await serverTime.isLaterThanAsync('2022-01-20T2:00:00.000Z');
+          // the timestamp passed to the isLaterThan method is UTC 
+          // time! When used in Switzerland during winter time, one 
+          // hour must be removed; e.g.: if you want to check if 
+          // it's 13:00:00 on January 20 you have to pass the 
+          // following string: 2022-01-20T12:00:00.000Z
+          // make sure the Z character at the end of the string is 
+          // present!
+          const myOffsetTime = '2022-01-20T2:00:00.000Z';
+          const isLater = await serverTime.isLaterThanAsync(myOffsetTime);
 
           if (isLater) {
             // display message that shall be displayed after 13:00
